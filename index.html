@@ -1,15 +1,236 @@
 <!DOCTYPE html>
 <html lang="uz">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZEFIR Collection</title>
-  </head>
-  <body class="bg-white text-gray-900">
-    <!-- Bu yerga JS orqali sections kiritamiz -->
-    <div id="app"></div>
 
-    <!-- Asosiy JS fayl -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arigonia Imperial</title>
+  <link rel="stylesheet" href="src/index.css">
+  <link rel="stylesheet" href="src/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<style>
+  .header {
+    background-image: url('assets/images/header_background_desctop.svg');
+    background-position: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      background-image: url('assets/images/header_background_mobile.svg');
+      background-position: center;
+      background-size: cover;
+    }
+
+  }
+</style>
+
+<body class="text-white  bg-cover">
+
+
+  <!-- Header / Navbar -->
+  <header class="relative z-10  h-screen "
+    style="background-image: url('assets/images/header_background_desctop.svg');">
+    <nav class="flex items-start justify-center px-4 py-3 md:px-8">
+      <!-- Logo qismi -->
+
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-gray-300">Главная</a>
+        <a href="#" class="hover:text-gray-300">Чертежи</a>
+        <a href="#" class="hover:text-gray-300">Комиксы</a>
+      </div>
+      <div class="flex items-start mx-32  flex-col space-x-2">
+        <img src="assets/images/logo.svg" alt="Arigonia Imperial" class="w-20 md:w-auto object-cover rounded-full" />
+      </div>
+
+      <!-- Desktop menyu (md: hidden bo'lmaydi) -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-gray-300">Игры</a>
+        <a href="#" class="hover:text-gray-300">Кастом</a>
+        <a href="#" class="hover:text-gray-300">Выйти</a>
+      </div>
+
+      <!-- Mobile menyu tugmasi -->
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Toggle menu">
+        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+          <path d="M4 5h16M4 12h16M4 19h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menyu (default: hidden) -->
+    <div id="mobileMenu" class="hidden flex-col items-center space-y-2 px-4 pb-4 md:hidden">
+      <a href="#" class="block w-full py-2 text-center hover:bg-gray-800">Главная</a>
+      <a href="#" class="block w-full py-2 text-center hover:bg-gray-800">Чертежи</a>
+      <a href="#" class="block w-full py-2 text-center hover:bg-gray-800">Комиксы</a>
+      <a href="#" class="block w-full py-2 text-center hover:bg-gray-800">Игры</a>
+      <a href="#" class="block w-full py-2 text-center hover:bg-gray-800">Кастом</a>
+      <a href="#" class="block w-full py-2 text-center hover:bg-gray-800">Выйти</a>
+    </div>
+
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+      <button class="px-12 py-4  text-white font-normal text-xl rounded-lg border-2 border-white transition">
+        Перейти
+      </button>
+    </div>
+  </header>
+
+
+
+
+
+  <!-- Asosiy kontent (fon rasmi bilan) -->
+  <main class="bg-black mx-auto max-w-full">
+    <section class="py-6">
+      <div class="flex items-start justify-center">
+        <div class="pr-16">
+          <img src="./assets/images/book.svg" alt="">
+        </div>
+        <div class="w-1/2">
+          <h1 class="text-4xl font-bold mb-4">Заголовок</h1>
+          <p class="mb-8">Природа — это бесконечный источник вдохновения и умиротворения. Лесные тропы, укрытые зеленью,
+            зовут вглубь тишины, где лишь шелест листьев да пение птиц нарушают покой. Река неспешно несёт свои воды,
+            отражая солнце в своих серебристых волнах. Аромат цветов наполняет воздух свежестью, и в этот момент
+            кажется, что весь мир замирает, уступая место гармонии</p>
+          <p>Каждый уголок природы — это произведение искусства, созданное самой Землёй. Величественные горы,
+            безмятежные озёра, золотые поля и бескрайние леса — всё это напоминает о том, как важно беречь и ценить нашу
+            планету. Ведь именно здесь, среди шёпота ветра и шороха травы, человек по-настоящему чувствует себя частью
+            чего-то великого.</p>
+          <div class="mt-8">
+            <button class="px-8 py-4 text-black font-normal text-xl rounded-lg"
+              style="background-color: rgba(254, 224, 164, 1);">Купить</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="news" class="py-[10rem]" style="background: url('./assets/images/news_background.svg');">
+      <div class="flex items-center flex-col  justify-center">
+        <div class="py-8">
+          <img src="./assets/images/linear.svg" alt="">
+        </div>
+        <h1 class="text-[4rem] font-bold my-6">Новости</h1>
+        <div class="swiper_body container mx-auto">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="w-full">
+                  <img src="./assets/images/news.svg" alt="">
+                </div>
+                <div>Slide 1</div>
+
+              </div>
+              <div class="swiper-slide">Slide 2</div>
+              <div class="swiper-slide">Slide 3</div>
+              <div class="swiper-slide">Slide 4</div>
+              <div class="swiper-slide">Slide 5</div>
+              <div class="swiper-slide">Slide 6</div>
+              <div class="swiper-slide">Slide 7</div>
+              <div class="swiper-slide">Slide 8</div>
+              <div class="swiper-slide">Slide 9</div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+
+        </div>
+    </section>
+
+    <section class="py-[8rem]">
+      <div class="flex items-center flex-col  justify-center">
+        <img src="./assets/images/leanflex.svg" alt="">
+      </div>
+    </section>
+
+
+    <section class="py-[10rem]">
+      <div class="text-center container mx-auto text-xl font-normal">
+        <p>Arigonia Imperial – издательский дом, где рождаются захватывающие истории, воплощенные в книгах, комиксах и
+          рассказах. Мы создаем произведения в различных жанрах, чтобы открывать для читателей новые миры и вдохновлять
+          на незабываемые впечатления. Приглашаем присоединиться к нашему сообществу, делиться мнениями о прочитанном,
+          обсуждать любимых авторов и находить новые литературные открытия. Вместе мы создаем пространство, где
+          рождается любовь к литературе и вдохновение для новых свершений</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-black">
+    <nav class="flex items-end justify-around px-4 py-3 md:px-8">
+      <!-- Logo qismi -->
+
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-gray-300">Главная</a>
+        <a href="#" class="hover:text-gray-300">Чертежи</a>
+        <a href="#" class="hover:text-gray-300">Комиксы</a>
+      </div>
+      <div class="flex items-start  flex-col space-x-2">
+        <img src="assets/images/logo.svg" alt="Arigonia Imperial" class="w-20 md:w-auto object-cover rounded-full" />
+      </div>
+
+      <!-- Desktop menyu (md: hidden bo'lmaydi) -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-gray-300">Игры</a>
+        <a href="#" class="hover:text-gray-300">Кастом</a>
+        <a href="#" class="hover:text-gray-300">Выйти</a>
+      </div>
+
+      <!-- Mobile menyu tugmasi -->
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Toggle menu">
+        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+          <path d="M4 5h16M4 12h16M4 19h16" />
+        </svg>
+      </button>
+    </nav>
+  </footer>
+
+  <!-- JavaScript (hamburger menyu toggling) -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Bu yerga JS orqali sections kiritamiz -->
+
+  <div id="app"></div>
+  <!-- Asosiy JS fayl -->
+  <!-- <script type="module" src="/src/main.js"></script> -->
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+</body>
+
 </html>
